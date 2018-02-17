@@ -43,7 +43,7 @@ local function getPercentage(value)
     return math.floor(value / total * 100 + 0.5) .. '%'
 end
 
-watch('bash -c "free | grep Mem"', 1,
+watch('bash -c "free | grep Mem"', 10,
     function(widget, stdout, stderr, exitreason, exitcode)
         total, used, free, shared, buff_cache, available = stdout:match('(%d+)%s*(%d+)%s*(%d+)%s*(%d+)%s*(%d+)%s*(%d+)')
         widget.data = { used, total-used }
